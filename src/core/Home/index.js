@@ -1,4 +1,4 @@
-import Layout from '../Layout/index';
+import Layout from '../Layout';
 import { APP_NAME } from '../../config';
 import './index.css';
 

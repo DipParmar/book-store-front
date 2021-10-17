@@ -25,19 +25,26 @@ const Menu = ({ history }) => {
           </li>
         </>
       ) : (
-        <li className='nav-item'>
-          <span
-            className='nav-link signout'
-            exact
-            onClick={() =>
-              signout(() => {
-                history.push('/');
-              })
-            }
-          >
-            Signout
-          </span>
-        </li>
+        <>
+          <li className='nav-item'>
+            <NavLink className='nav-link' exact activeClassName='is-active' to='/dashboard'>
+              Dashboard
+            </NavLink>
+          </li>
+          <li className='nav-item'>
+            <span
+              className='nav-link signout'
+              exact
+              onClick={() =>
+                signout(() => {
+                  history.push('/');
+                })
+              }
+            >
+              Signout
+            </span>
+          </li>
+        </>
       )}
     </ul>
   );
