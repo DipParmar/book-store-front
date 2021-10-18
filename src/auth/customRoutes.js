@@ -51,8 +51,8 @@ export const AdminRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) =>
-        user?.role === 1 ? (
+      render={(props) => {
+        return user?.role === 1 ? (
           <Component></Component>
         ) : (
           <Redirect
@@ -63,8 +63,8 @@ export const AdminRoute = ({ component: Component, ...rest }) => {
               },
             }}
           ></Redirect>
-        )
-      }
+        );
+      }}
     ></Route>
   );
 };

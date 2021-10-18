@@ -5,6 +5,7 @@ import Signin from './user/Signin';
 import Home from './core/Home';
 import UserDashboard from './user/UserDashboard';
 import AdminDashboard from './user/AdminDashboard';
+import { AddCategory } from './admin/AddCategory';
 
 const Routes = () => {
   return (
@@ -16,6 +17,8 @@ const Routes = () => {
         <UnAuthenticatedRoute path='/signup' exact component={Signup} />
         <UserRoute path='/user/dashboard' exact component={UserDashboard}></UserRoute>
         <AdminRoute path='/admin/dashboard' exact component={AdminDashboard}></AdminRoute>
+        <AdminRoute path='/admin/create/category' exact component={AddCategory}></AdminRoute>
+
         <Route path='*' component={Home} />
       </Switch>
     </BrowserRouter>
