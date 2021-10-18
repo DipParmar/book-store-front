@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import Layout from '../../core/Layout';
 import { APP_NAME } from '../../config';
 import { signin, authenticate } from '../../auth';
+import { isAuthenticated } from '../../auth';
 
 import './index.css';
 
@@ -14,6 +15,8 @@ const Signin = () => {
     loading: false,
     redirectToReferrer: false,
   });
+
+  const { user } = isAuthenticated();
 
   const handleChange = useCallback(
     (name) => (event) => {
@@ -67,9 +70,12 @@ const Signin = () => {
 
   const redirectUser = useCallback(() => {
     if (values.redirectToReferrer) {
-      return <Redirect to='/'></Redirect>;
+      console.log(user);
+      const isAdmin = user && user.role === 1;
+      const dashBoardUrl = isAdmin ? '/admin/dashboard' : '/user/dashboard';
+      return <Redirect to={dashBoardUrl}></Redirect>;
     }
-  }, [values.redirectToReferrer]);
+  }, [user, values.redirectToReferrer]);
 
   const signInForm = useCallback(() => {
     return (

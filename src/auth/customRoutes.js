@@ -1,12 +1,13 @@
 import { Route, Redirect } from 'react-router-dom';
 import { isAuthenticated } from '.';
 
-export const AuthenticatedRoute = ({ component: Component, ...rest }) => {
+export const UserRoute = ({ component: Component, ...rest }) => {
+  const { user } = isAuthenticated();
   return (
     <Route
       {...rest}
       render={(props) =>
-        isAuthenticated() ? (
+        user?.role === 0 ? (
           <Component></Component>
         ) : (
           <Redirect
@@ -27,7 +28,43 @@ export const UnAuthenticatedRoute = ({ component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
-      render={(props) => (!isAuthenticated() ? <Component></Component> : props.history.goBack())}
+      render={(props) =>
+        !isAuthenticated() ? (
+          <Component></Component>
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/home',
+              state: {
+                from: props.location,
+              },
+            }}
+          ></Redirect>
+        )
+      }
+    ></Route>
+  );
+};
+
+export const AdminRoute = ({ component: Component, ...rest }) => {
+  const { user } = isAuthenticated();
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        user?.role === 1 ? (
+          <Component></Component>
+        ) : (
+          <Redirect
+            to={{
+              pathname: '/home',
+              state: {
+                from: props.location,
+              },
+            }}
+          ></Redirect>
+        )
+      }
     ></Route>
   );
 };

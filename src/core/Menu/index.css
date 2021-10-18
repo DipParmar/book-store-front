@@ -1,11 +1,11 @@
-.nav-link {
+.nav-tabs .nav-link {
   color: #fff;
 }
 
-.is-active {
+.nav-tabs .is-active {
   color: #ff9900;
 }
 
-.signout {
+.nav-tabs .signout {
   cursor: pointer;
 }

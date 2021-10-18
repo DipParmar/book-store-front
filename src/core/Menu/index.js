@@ -1,8 +1,13 @@
+import { useMemo } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { signout, isAuthenticated } from '../../auth';
 import './index.css';
 
 const Menu = ({ history }) => {
+  const { user } = isAuthenticated();
+
+  const isAdmin = useMemo(() => user?.role === 1, [user?.role]);
+
   return (
     <ul className='nav nav-tabs bg-primary'>
       <li className='nav-item'>
@@ -11,7 +16,7 @@ const Menu = ({ history }) => {
         </NavLink>
       </li>
 
-      {!isAuthenticated() ? (
+      {!user ? (
         <>
           <li className='nav-item'>
             <NavLink className='nav-link' exact activeClassName='is-active' to='/signin'>
@@ -27,7 +32,12 @@ const Menu = ({ history }) => {
       ) : (
         <>
           <li className='nav-item'>
-            <NavLink className='nav-link' exact activeClassName='is-active' to='/dashboard'>
+            <NavLink
+              className='nav-link'
+              exact
+              activeClassName='is-active'
+              to={(isAdmin ? '/admin' : '/user') + '/dashboard'}
+            >
               Dashboard
             </NavLink>
           </li>

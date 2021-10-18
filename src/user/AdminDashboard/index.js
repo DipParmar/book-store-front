@@ -4,12 +4,12 @@ import { Card } from '../../common/Card';
 import { isAuthenticated } from '../../auth';
 import { Link } from 'react-router-dom';
 
-const UserDashboard = () => {
+const AdminDashboard = () => {
   const {
     user: { name, email, role },
   } = isAuthenticated();
 
-  const userInformation = useMemo(
+  const adminInformation = useMemo(
     () => [
       {
         content: name,
@@ -23,28 +23,20 @@ const UserDashboard = () => {
     ],
     [email, name, role]
   );
-  const purchaseHistory = useMemo(
-    () => [
-      {
-        content: 'history',
-      },
-    ],
-    []
-  );
 
-  const userLinks = useMemo(
+  const adminLinks = useMemo(
     () => [
       {
         content: (
-          <Link className='nav-link' to='/cart'>
-            My Cart
+          <Link className='nav-link' to='/create/category'>
+            Create Category
           </Link>
         ),
       },
       {
         content: (
-          <Link className='nav-link' to='/profile/update'>
-            Update Profile
+          <Link className='nav-link' to='/create/product'>
+            Create Product
           </Link>
         ),
       },
@@ -55,15 +47,14 @@ const UserDashboard = () => {
     <Layout title='Dashboard' className='container-fluid' description={`G'day ${name}`}>
       <div className='row'>
         <div className='col-3'>
-          <Card listName='Purchase History' listItems={purchaseHistory}></Card>
+          <Card listName='Admin Links' listItems={adminLinks}></Card>
         </div>
         <div className='col-9'>
-          <Card listName='User Information' listItems={userInformation}></Card>
-          <Card listName='User Links' listItems={userLinks}></Card>
+          <Card listName='Admin Information' listItems={adminInformation}></Card>
         </div>
       </div>
     </Layout>
   );
 };
 
-export default UserDashboard;
+export default AdminDashboard;
