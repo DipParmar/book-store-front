@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const AdminDashboard = () => {
   const {
-    user: { name, email, role },
+    user: { name, email },
   } = isAuthenticated();
 
   const adminInformation = useMemo(
@@ -18,24 +18,24 @@ const AdminDashboard = () => {
         content: email,
       },
       {
-        content: role === 1 ? 'Admin' : 'User',
+        content: 'Admin',
       },
     ],
-    [email, name, role]
+    [email, name]
   );
 
   const adminLinks = useMemo(
     () => [
       {
         content: (
-          <Link className='nav-link' to='/create/category'>
+          <Link className='nav-link' to='/admin/create/category'>
             Create Category
           </Link>
         ),
       },
       {
         content: (
-          <Link className='nav-link' to='/create/product'>
+          <Link className='nav-link' to='/admin/create/product'>
             Create Product
           </Link>
         ),

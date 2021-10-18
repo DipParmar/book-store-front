@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 const UserDashboard = () => {
   const {
-    user: { name, email, role },
+    user: { name, email },
   } = isAuthenticated();
 
   const userInformation = useMemo(
@@ -18,10 +18,10 @@ const UserDashboard = () => {
         content: email,
       },
       {
-        content: role === 1 ? 'Admin' : 'User',
+        content: 'User',
       },
     ],
-    [email, name, role]
+    [email, name]
   );
   const purchaseHistory = useMemo(
     () => [

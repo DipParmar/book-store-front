@@ -70,7 +70,6 @@ const Signin = () => {
 
   const redirectUser = useCallback(() => {
     if (values.redirectToReferrer) {
-      console.log(user);
       const isAdmin = user && user.role === 1;
       const dashBoardUrl = isAdmin ? '/admin/dashboard' : '/user/dashboard';
       return <Redirect to={dashBoardUrl}></Redirect>;
