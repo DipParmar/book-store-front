@@ -13,3 +13,11 @@ export const createCategory = async ({ userId, token, category }) => {
     .then((res) => res.json())
     .catch((e) => console.log(e));
 };
+
+export const getCategories = () => {
+  return fetch(`${API}/category`, {
+    method: 'GET',
+  })
+    .then((response) => response.json())
+    .catch((e) => console.log(e));
+};
