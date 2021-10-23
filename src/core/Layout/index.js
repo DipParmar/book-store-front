@@ -1,4 +1,5 @@
 import Menu from '../Menu';
+
 import './index.css';
 
 const Layout = ({ title = 'Title', description = 'Description', className, children }) => {
