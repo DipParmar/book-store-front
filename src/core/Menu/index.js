@@ -15,6 +15,11 @@ const Menu = ({ history }) => {
           Home
         </NavLink>
       </li>
+      <li className='nav-item'>
+        <NavLink className='nav-link' exact activeClassName='is-active' to='/shop'>
+          Shop
+        </NavLink>
+      </li>
 
       {!user ? (
         <>
@@ -44,7 +49,6 @@ const Menu = ({ history }) => {
           <li className='nav-item'>
             <span
               className='nav-link signout'
-              exact
               onClick={() =>
                 signout(() => {
                   history.push('/');

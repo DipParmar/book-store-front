@@ -7,6 +7,7 @@ import UserDashboard from './user/UserDashboard';
 import AdminDashboard from './user/AdminDashboard';
 import { AddCategory } from './admin/AddCategory';
 import { AddProduct } from './admin/AddProduct';
+import { Shop } from './core/Shop';
 
 const Routes = () => {
   return (
@@ -14,6 +15,7 @@ const Routes = () => {
       <Switch>
         <Route path='/' exact component={Home} />
         <Route path='/home' exact component={Home} />
+        <Route path='/shop' exact component={Shop} />
         <UnAuthenticatedRoute path='/signin' exact component={Signin} />
         <UnAuthenticatedRoute path='/signup' exact component={Signup} />
         <UserRoute path='/user/dashboard' exact component={UserDashboard}></UserRoute>
