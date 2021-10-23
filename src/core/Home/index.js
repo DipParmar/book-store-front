@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import Layout from '../Layout';
 import { APP_NAME } from '../../config';
-import { getProducts } from '../../common/api/core';
+import { getProducts } from '../../common/api/';
 
 import './index.css';
 import { ProductCard } from '../../common/Components/ProductCard';

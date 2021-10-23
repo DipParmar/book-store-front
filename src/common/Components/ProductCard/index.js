@@ -8,7 +8,7 @@ export const ProductCard = ({ product }) => {
         <div className='card-header'>{product.name}</div>
         <div className='card-body'>
           <Image item={product} url='product' />
-          <p>{product.description}</p>
+          <p>{product.description?.substring(0, 100)}</p>
           <p>₹{product.price}</p>
           <Link to='/'>
             <button className='btn btn-outline-info mt-2 mb-2 mr-2'>View Product</button>
