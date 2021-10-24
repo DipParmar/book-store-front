@@ -5,6 +5,7 @@ import { getProducts } from '../../common/api/';
 
 import './index.css';
 import { ProductCard } from '../../common/Components/ProductCard';
+import { Search } from '../Search';
 
 const Home = () => {
   const [productsBySell, setProductsBySell] = useState([]);
@@ -37,6 +38,7 @@ const Home = () => {
   }, [loadProductsByArrival, loadProductsBySell]);
   return (
     <Layout title='Home Page' className='container-fluid ' description={APP_NAME}>
+      <Search></Search>
       <h2 className='mb-4'> Best Sellers </h2>
       <div className='row'>
         {productsBySell.map((product, i) => (
