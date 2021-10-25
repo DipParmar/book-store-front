@@ -27,13 +27,26 @@ export const getFilterdProducts = ({ skip, limit, filters = {} }) => {
 
 export const list = (params) => {
   const query = queryString.stringify(params);
-  console.log(query);
   return fetch(`${API}/product/search?${query}`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
+  })
+    .then((response) => response.json())
+    .catch((err) => console.log(err));
+};
+
+export const read = ({ productId }) => {
+  return fetch(`${API}/product/${productId}`, { method: 'GET' })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+};
+
+export const listRelated = ({ productId }) => {
+  return fetch(`${API}/product/related/${productId}`, {
+    method: 'GET',
   })
     .then((response) => response.json())
     .catch((err) => console.log(err));

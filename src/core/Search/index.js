@@ -84,18 +84,21 @@ export const Search = () => {
       return 'No products found';
     }
   }, []);
-  const searchedProducts = useCallback((results = []) => {
-    return (
-      <>
-        <h2 className='mt-4 mb-4'>{searchMessage(searched, results)}</h2>
-        <div className='row'>
-          {results.map((product) => (
-            <ProductCard key={product.id} {...{ product }}></ProductCard>
-          ))}
-        </div>
-      </>
-    );
-  }, []);
+  const searchedProducts = useCallback(
+    (results = []) => {
+      return (
+        <>
+          <h2 className='mt-4 mb-4'>{searchMessage(searched, results)}</h2>
+          <div className='row'>
+            {results.map((product) => (
+              <ProductCard key={product.id} {...{ product }}></ProductCard>
+            ))}
+          </div>
+        </>
+      );
+    },
+    [searchMessage, searched]
+  );
 
   return (
     <div>
