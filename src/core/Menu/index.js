@@ -1,6 +1,7 @@
 import { useMemo } from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import { signout, isAuthenticated } from '../../auth';
+import { itemTotal } from '../../common/utils/cartHelpers';
 import './index.css';
 
 const Menu = ({ history }) => {
@@ -18,6 +19,14 @@ const Menu = ({ history }) => {
       <li className='nav-item'>
         <NavLink className='nav-link' exact activeClassName='is-active' to='/shop'>
           Shop
+        </NavLink>
+      </li>
+      <li className='nav-item'>
+        <NavLink className='nav-link' exact activeClassName='is-active' to='/cart'>
+          Cart
+          <sup>
+            <small className='cart-badge'>{itemTotal()}</small>
+          </sup>
         </NavLink>
       </li>
 

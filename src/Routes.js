@@ -8,6 +8,8 @@ import AdminDashboard from './user/AdminDashboard';
 import { AddCategory } from './admin/AddCategory';
 import { AddProduct } from './admin/AddProduct';
 import { Shop } from './core/Shop';
+import { Product } from './core/Product';
+import { Cart } from './core/Cart';
 
 const Routes = () => {
   return (
@@ -16,6 +18,8 @@ const Routes = () => {
         <Route path='/' exact component={Home} />
         <Route path='/home' exact component={Home} />
         <Route path='/shop' exact component={Shop} />
+        <Route path='/cart' exact component={Cart} />
+        <Route path='/product/:productId' exact component={Product} />
         <UnAuthenticatedRoute path='/signin' exact component={Signin} />
         <UnAuthenticatedRoute path='/signup' exact component={Signup} />
         <UserRoute path='/user/dashboard' exact component={UserDashboard}></UserRoute>
